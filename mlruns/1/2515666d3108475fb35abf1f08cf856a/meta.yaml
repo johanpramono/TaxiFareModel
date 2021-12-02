@@ -1,0 +1,15 @@
+artifact_uri: file:///home/johanpramono/code/johanpramono/TaxiFareModel/mlruns/1/2515666d3108475fb35abf1f08cf856a/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+name: ''
+run_id: 2515666d3108475fb35abf1f08cf856a
+run_uuid: 2515666d3108475fb35abf1f08cf856a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1638275411104
+status: 1
+tags: []
+user_id: unknown
