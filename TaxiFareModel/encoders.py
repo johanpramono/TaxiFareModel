@@ -1,10 +1,10 @@
 import pandas as pd
+import scipy
 
 from sklearn.base import BaseEstimator, TransformerMixin
 
-from TaxiFareModel.utils import haversine_vectorized
-
-NYC_CENTER = (40.7141667, -74.0063889)
+from TaxiFareModel.utils import haversine_vectorized, df_optimized
+from TaxiFareModel.params import *
 
 class TimeFeaturesEncoder(BaseEstimator, TransformerMixin):
     """
@@ -91,3 +91,22 @@ class DistanceToCenter(BaseEstimator, TransformerMixin):
             end_lon=self.end_lon
         )
         return X_[['distance_from_center']]
+    
+class DfOptimizer(BaseEstimator, TransformerMixin):
+    def __init__(self):
+        pass
+    
+    def fit(self, X, y=None):
+        return self
+    
+    def transform(self, X, y=None):
+        if not isinstance(X, pd.DataFrame):
+            print(type(X))
+            if isinstance(X, scipy.sparse.csr.csr_matrix):
+                X = pd.DataFrame(X.toarray())
+            else:
+                X = pd.DataFrame(X)
+            
+        X_ = X.copy()
+        X_ = df_optimized(X_)
+        return X_.to_numpy()
